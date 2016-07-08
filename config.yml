@@ -1,0 +1,26 @@
+version: 0.1
+log:
+  fields:
+    service: registry
+storage:
+  cache:
+    blobdescriptor: inmemory
+  filesystem:
+    rootdirectory: /var/lib/registry
+http:
+  addr: :443
+  host: https://registry.innovandalism.eu
+  headers:
+    X-Content-Type-Options: [nosniff]
+  tls:
+    certificate: /etc/cert.pem
+    key: /etc/cert.key
+health:
+  storagedriver:
+    enabled: true
+    interval: 10s
+    threshold: 3
+auth:
+  htpasswd:
+    realm: Mystery
+    path: /etc/htpasswd

@@ -1,0 +1,11 @@
+version: "2"
+services:
+  registry:
+    image: registry:2
+    ports:
+    - "443:443"
+    volumes:
+    - ./config.yml:/etc/docker/registry/config.yml
+    - /etc/letsencrypt/live/registry.innovandalism.eu/fullchain.pem:/etc/cert.pem
+    - /etc/letsencrypt/live/registry.innovandalism.eu/privkey.pem:/etc/cert.key
+    - ./htpasswd:/etc/htpasswd
